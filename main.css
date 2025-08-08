@@ -7,22 +7,23 @@ body {
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-  align-items: center;  /* center vertically */
+  align-items: center; /* changed from flex-start */
   min-height: 100vh;
 }
 
-
 .quiz-container {
-  background: #f0f5e9; /* pale green */
+  background: #f0f5e9;
   border-radius: 12px;
   padding: 30px 40px;
   max-width: 90vw;
+  max-height: 90vh; /* new */
   width: 100%;
   box-shadow: 0 10px 30px rgba(52, 77, 63, 0.12);
   transition: box-shadow 0.3s ease;
-  min-height: 80vh;
   box-sizing: border-box;
+  overflow-y: auto; /* new */
 }
+
 
 .quiz-container:hover {
   box-shadow: 0 14px 45px rgba(52, 77, 63, 0.22);
