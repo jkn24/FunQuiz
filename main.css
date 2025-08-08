@@ -1,81 +1,171 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7faff;
-    padding: 40px;
-    color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9f9e7; /* very pale yellow */
+  color: #344d3f; /* dark muted green */
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
 }
 
 .quiz-container {
-    max-width: 600px;
-    margin: auto;
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  background: #f0f5e9; /* pale green */
+  border-radius: 12px;
+  padding: 30px 40px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(52, 77, 63, 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+.quiz-container:hover {
+  box-shadow: 0 14px 45px rgba(52, 77, 63, 0.22);
 }
 
 h1 {
-    text-align: center;
-    color: #00497a;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #3c5a33; /* deeper green */
+  letter-spacing: 0.04em;
 }
 
-.question {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin: 5px 0;
-}
-
-.submit-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-button {
-    background-color: #006c9c;
-    color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #005580;
-}
-
-.result {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.success {
-    color: green;
-}
-
-.error {
-    color: red;
-}
-
-.question-slide {
-    display: none;
-    margin-bottom: 20px;
-}
-
-.question-slide.active {
-    display: block;
-}
-
+/* Question styling */
 .question-slide {
   display: none;
+  margin-bottom: 30px;
 }
 
 .question-slide.active {
   display: block;
 }
 
+.question-slide p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+  color: #4a633e;
+}
+
+/* Labels and inputs */
+label {
+  display: block;
+  background: #e7efd9; /* pale green highlight */
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #405538;
+  box-shadow: 0 2px 6px rgba(101, 128, 76, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  position: relative;
+}
+
+/* Radio button hide */
+label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Custom radio style */
+label::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid #8da87e; /* pale green border */
+  border-radius: 50%;
+  margin-right: 14px;
+  vertical-align: middle;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* When checked */
+label input[type="radio"]:checked + span,
+label input[type="radio"]:checked + label::before {
+  background-color: #c5d8a4;
+  border-color: #7a9750;
+}
+
+/* Actually style the radio (using adjacent sibling) */
+label input[type="radio"]:checked + label::before,
+label input[type="radio"]:checked + span::before {
+  background-color: #7a9750;
+  border-color: #7a9750;
+}
+
+/* Show custom "dot" inside radio */
+label input[type="radio"]:checked::before {
+  box-shadow: inset 0 0 0 6px #7a9750;
+}
+
+/* When label hovered */
+label:hover {
+  background-color: #d6e2b7;
+  box-shadow: 0 4px 10px rgba(101, 128, 76, 0.15);
+}
+
+/* Result message */
+.result {
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 0.03em;
+  box-shadow: 0 6px 18px rgba(101, 128, 76, 0.12);
+}
+
+.success {
+  color: #2f5d27;
+  background-color: #d4e7b0;
+  border: 2px solid #7a9750;
+}
+
+.error {
+  color: #7f4a26;
+  background-color: #f9e2d0;
+  border: 2px solid #ca7a50;
+}
+
+/* Try again button */
+#try-again button {
+  margin-top: 20px;
+  background-color: #a2bf65;
+  color: white;
+  font-weight: 600;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: background-color 0.3s ease;
+}
+
+#try-again button:hover {
+  background-color: #7a9750;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .quiz-container {
+    padding: 25px 20px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  label {
+    font-size: 0.95rem;
+  }
+}
