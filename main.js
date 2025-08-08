@@ -1,5 +1,4 @@
 const slides = document.querySelectorAll('.question-slide');
-const backButtons = document.querySelectorAll('.back-button');
 let currentSlide = 0;
 
 function showSlide(index) {
@@ -7,12 +6,6 @@ function showSlide(index) {
     slide.style.display = i === index ? 'block' : 'none';
   });
   currentSlide = index;
-
-  // Disable back button on the current slide if it's the first slide
-  backButtons.forEach((button, i) => {
-    button.disabled = (i === index) && (index === 0);
-  });
-}
 
 function goToSlide(index) {
   if (index >= 0 && index < slides.length) {
@@ -57,12 +50,5 @@ slides.forEach((slide, index) => {
         evaluateEligibility();
       }
     });
-  });
-});
-
-// Back buttons to go to previous slide
-backButtons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    goToSlide(currentSlide - 1);
   });
 });
