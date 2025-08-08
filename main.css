@@ -186,7 +186,7 @@ input[type="radio"]:checked + label {
 
 /* Add vertical spacing around options row */
 .options-row {
-  margin-bottom: 40px; /* increased from 30px */
+  margin-bottom: 120px; /* increased from 30px */
 }
 
 /* On smaller screens where labels stack vertically, add spacing between them */
