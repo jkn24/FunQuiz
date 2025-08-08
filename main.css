@@ -48,20 +48,33 @@ h1 {
   display: block;
 }
 
+..question-slide {
+  display: none;
+  margin-bottom: 30px;
+  
+  display: flex;             /* make flex container */
+  flex-direction: column;    /* stack question and answers vertically */
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
+  min-height: 300px;         /* set a height so vertical centering works */
+  text-align: center;        /* center text inside */
+}
+
 .question-slide p {
   font-weight: 600;
   font-size: 1.2rem;
-  margin-bottom: 18px;
+  margin-bottom: 30px;
   color: #4a633e;
+  max-width: 600px;          /* limit width so it looks nicer */
 }
 
-/* Labels and inputs */
+/* Make labels inline-block with some spacing */
 label {
-  display: block;
+  display: inline-block;
   background: #e7efd9;
   border-radius: 8px;
-  padding: 18px 20px;
-  margin-bottom: 18px;
+  padding: 18px 30px;
+  margin: 8px 12px;          /* horizontal and vertical margin */
   cursor: pointer;
   font-size: 1.2rem;
   color: #405538;
@@ -69,6 +82,7 @@ label {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
+
 
 /* Hide the radio buttons entirely */
 input[type="radio"] {
@@ -179,11 +193,6 @@ input[type="radio"]:checked + label {
   background-color: #c5d8a4;
   box-shadow: 0 6px 12px rgba(101, 128, 76, 0.25);
   color: #314725;
-}
-
-/* Add more space below question text */
-.question-slide p {
-  margin-bottom: 30px; /* increased from 18px */
 }
 
 /* Add vertical spacing around options row */
