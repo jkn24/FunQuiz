@@ -15,11 +15,11 @@ body {
   background: #f0f5e9; /* pale green */
   border-radius: 12px;
   padding: 30px 40px;
-  max-width: 90vw;      /* takes up most of viewport width */
+  max-width: 90vw;
   width: 100%;
   box-shadow: 0 10px 30px rgba(52, 77, 63, 0.12);
   transition: box-shadow 0.3s ease;
-  min-height: 80vh;     /* fill vertical space nicely */
+  min-height: 80vh;
   box-sizing: border-box;
 }
 
@@ -32,7 +32,7 @@ h1 {
   font-weight: 700;
   font-size: 1.8rem;
   margin-bottom: 25px;
-  color: #3c5a33; /* deeper green */
+  color: #3c5a33;
   letter-spacing: 0.04em;
 }
 
@@ -56,7 +56,7 @@ h1 {
 /* Labels and inputs */
 label {
   display: block;
-  background: #e7efd9; /* pale green highlight */
+  background: #e7efd9;
   border-radius: 8px;
   padding: 18px 20px;
   margin-bottom: 18px;
@@ -66,8 +66,6 @@ label {
   box-shadow: 0 2px 6px rgba(101, 128, 76, 0.1);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
-  /* Remove left padding for no radio button */
-  padding-left: 20px;
 }
 
 /* Hide the radio buttons entirely */
@@ -150,8 +148,8 @@ input[type="radio"]:checked + label {
 /* Container to hold yes/no side by side */
 .options-row {
   display: flex;
-  gap: 20px;           /* space between Yes and No */
-  margin-bottom: 30px; /* space below the options */
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 /* Make each label a flex item with equal width */
@@ -169,20 +167,14 @@ input[type="radio"]:checked + label {
   user-select: none;
 }
 
-/* Hover and selected styles */
+/* Hover and selected styles for options-row only */
 .options-row label:hover {
   background-color: #d6e2b7;
   box-shadow: 0 4px 10px rgba(101, 128, 76, 0.15);
 }
 
-input[type="radio"]:checked + label {
+.options-row input[type="radio"]:checked + label {
   background-color: #c5d8a4;
   box-shadow: 0 6px 12px rgba(101, 128, 76, 0.25);
   color: #314725;
 }
-
-/* Hide radios as before */
-input[type="radio"] {
-  display: none;
-}
-
