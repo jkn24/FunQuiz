@@ -71,16 +71,6 @@ button:hover {
     display: block;
 }
 
-.back-button {
-    margin-top: 10px;
-    background-color: #ccc;
-    color: #000;
-}
-
-.back-button:hover {
-    background-color: #bbb;
-}
-
 .question-slide {
   display: none;
 }
