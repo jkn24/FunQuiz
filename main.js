@@ -6,6 +6,7 @@ let currentSlide = 0;
 showSlide(currentSlide);
 
 slides.forEach((slide, index) => {
+  // Attach change listeners to each radio button in this slide
   const radios = slide.querySelectorAll('input[type="radio"]');
   radios.forEach(radio => {
     radio.addEventListener('change', () => {
