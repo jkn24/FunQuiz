@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PI Researcher Eligibility Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1> Are You Eligible for PI Researcher Funding?</h1>
+        <form id="eligibility-quiz">
+            <div class="question">
+                <p>1. Are you a full-time faculty or staff member at Cal Poly Humboldt?</p>
+                <label><input type="radio" name="q1" value="yes"> Yes</label>
+                <label><input type="radio" name="q1" value="no"> No</label>
+            </div>
+
+            <div class="question">
+                <p>2. Do you plan to submit a research proposal within the next academic year?</p>
+                <label><input type="radio" name="q2" value="yes"> Yes</label>
+                <label><input type="radio" name="q2" value="no"> No</label>
+            </div>
+
+            <div class="question">
+                <p>3. Have you completed the required Responsible Conduct of Research (RCR) training?</p>
+                <label><input type="radio" name="q3" value="yes"> Yes</label>
+                <label><input type="radio" name="q3" value="no"> No</label>
+            </div>
+
+            <div class="question">
+                <p>4. Do you have departmental approval to act as a Principal Investigator (PI)?</p>
+                <label><input type="radio" name="q4" value="yes"> Yes</label>
+                <label><input type="radio" name="q4" value="no"> No</label>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit">Check My Eligibility</button>
+            </div>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('eligibility-quiz').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = ['q1', 'q2', 'q3', 'q4'].map(q => {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                return selected ? selected.value : 'no';
+            });
+
+            const allYes = answers.every(answer => answer === 'yes');
+            const resultDiv = document.getElementById('result');
+
+            if (allYes) {
+                resultDiv.textContent = "Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!";
+                resultDiv.className = "result success";
+            } else {
+                resultDiv.textContent = "Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
+                resultDiv.className = "result error";
+            }
+        });
+    </script>
+</body>
+</html>
