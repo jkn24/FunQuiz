@@ -7,7 +7,8 @@
 </head>
 <body>
     <div class="quiz-container">
-        <h1> Are You Eligible for PI Researcher Funding?</h1>
+        <h1>Are You Eligible for PI Researcher Funding?</h1>
+
         <form id="eligibility-quiz">
             <div class="question">
                 <p>1. Are you a full-time faculty or staff member at Cal Poly Humboldt?</p>
@@ -37,27 +38,38 @@
                 <button type="submit">Check My Eligibility</button>
             </div>
         </form>
-        <div id="result" class="result"></div>
+
+        <div id="result" class="result" style="display: none;"></div>
+
+        <div id="try-again" style="display: none; text-align: center; margin-top: 20px;">
+            <button onclick="location.reload()">Try Again</button>
+        </div>
     </div>
 
     <script>
         document.getElementById('eligibility-quiz').addEventListener('submit', function(e) {
             e.preventDefault();
+
             const answers = ['q1', 'q2', 'q3', 'q4'].map(q => {
                 const selected = document.querySelector(`input[name="${q}"]:checked`);
                 return selected ? selected.value : 'no';
             });
 
             const allYes = answers.every(answer => answer === 'yes');
-            const resultDiv = document.getElementById('result');
 
-            if (allYes) {
-                resultDiv.textContent = "Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!";
-                resultDiv.className = "result success";
-            } else {
-                resultDiv.textContent = "Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
-                resultDiv.className = "result error";
-            }
+            // Hide the form
+            document.getElementById('eligibility-quiz').style.display = 'none';
+
+            // Show result
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = allYes
+                ? "Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!"
+                : "Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
+            resultDiv.className = "result " + (allYes ? "success" : "error");
+
+            // Show Try Again button
+            document.getElementById('try-again').style.display = 'block';
         });
     </script>
 </body>
