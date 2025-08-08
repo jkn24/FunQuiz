@@ -5,8 +5,8 @@ let currentSlide = 0;
 // Show the initial question
 showSlide(currentSlide);
 
+// Add change listeners to radio buttons to auto-advance
 slides.forEach((slide, index) => {
-  // Attach change listeners to each radio button in this slide
   const radios = slide.querySelectorAll('input[type="radio"]');
   radios.forEach(radio => {
     radio.addEventListener('change', () => {
@@ -19,6 +19,7 @@ slides.forEach((slide, index) => {
   });
 });
 
+// Add back button functionality
 backButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
     if (index > 0) {
@@ -32,6 +33,11 @@ function showSlide(index) {
     slide.classList.toggle('active', i === index);
   });
   currentSlide = index;
+
+  // Disable or enable back button accordingly
+  backButtons.forEach((button, i) => {
+    button.disabled = i === 0 && index === 0;
+  });
 }
 
 function goToSlide(index) {
