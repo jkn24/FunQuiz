@@ -61,3 +61,22 @@ button:hover {
 .error {
     color: red;
 }
+
+.question-slide {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.question-slide.active {
+    display: block;
+}
+
+.back-button {
+    margin-top: 10px;
+    background-color: #ccc;
+    color: #000;
+}
+
+.back-button:hover {
+    background-color: #bbb;
+}
