@@ -80,3 +80,11 @@ button:hover {
 .back-button:hover {
     background-color: #bbb;
 }
+
+.question-slide {
+  display: none; /* hide all by default */
+}
+
+.question-slide.active {
+  display: block; /* show only active */
+}
