@@ -5,7 +5,7 @@ let currentSlide = 0;
 // Show the initial question
 showSlide(currentSlide);
 
-// Add change listeners to radio buttons to auto-advance
+// Auto-advance on radio button change
 slides.forEach((slide, index) => {
   const radios = slide.querySelectorAll('input[type="radio"]');
   radios.forEach(radio => {
@@ -19,7 +19,7 @@ slides.forEach((slide, index) => {
   });
 });
 
-// Add back button functionality
+// Back button goes to previous slide if possible
 backButtons.forEach(button => {
   button.addEventListener('click', () => {
     if (currentSlide > 0) {
@@ -34,7 +34,7 @@ function showSlide(index) {
   });
   currentSlide = index;
 
-  // Disable or enable back button accordingly
+  // Disable the back button on first slide, enable otherwise
   backButtons.forEach((button, i) => {
     button.disabled = i === 0 && index === 0;
   });
@@ -55,14 +55,14 @@ function evaluateEligibility() {
   // Hide the form
   document.getElementById('eligibility-quiz').style.display = 'none';
 
-  // Show result
+  // Show the result message
   const resultDiv = document.getElementById('result');
   resultDiv.style.display = 'block';
   resultDiv.textContent = allYes
-    ? "Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!"
-    : "Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
+    ? "🎉 Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!"
+    : "⚠️ Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
   resultDiv.className = "result " + (allYes ? "success" : "error");
 
-  // Show Try Again button
+  // Show the Try Again button
   document.getElementById('try-again').style.display = 'block';
 }
