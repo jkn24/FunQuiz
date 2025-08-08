@@ -6,6 +6,7 @@ function showSlide(index) {
     slide.style.display = i === index ? 'block' : 'none';
   });
   currentSlide = index;
+}
 
 function goToSlide(index) {
   if (index >= 0 && index < slides.length) {
