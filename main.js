@@ -20,10 +20,10 @@ slides.forEach((slide, index) => {
 });
 
 // Add back button functionality
-backButtons.forEach((button, index) => {
+backButtons.forEach(button => {
   button.addEventListener('click', () => {
-    if (index > 0) {
-      goToSlide(index - 1);
+    if (currentSlide > 0) {
+      goToSlide(currentSlide - 1);
     }
   });
 });
