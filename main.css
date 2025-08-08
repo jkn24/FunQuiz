@@ -82,9 +82,10 @@ button:hover {
 }
 
 .question-slide {
-  display: none; /* hide all by default */
+  display: none;
 }
 
 .question-slide.active {
-  display: block; /* show only active */
+  display: block;
 }
+
