@@ -2,46 +2,22 @@ const slides = document.querySelectorAll('.question-slide');
 const backButtons = document.querySelectorAll('.back-button');
 let currentSlide = 0;
 
-// Show the initial question
-showSlide(currentSlide);
-
-// Auto-advance on radio button change
-slides.forEach((slide, index) => {
-  const radios = slide.querySelectorAll('input[type="radio"]');
-  radios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      if (index < slides.length - 1) {
-        goToSlide(index + 1);
-      } else {
-        evaluateEligibility();
-      }
-    });
-  });
-});
-
-// Back button goes to previous slide if possible
-backButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    if (currentSlide > 0) {
-      goToSlide(currentSlide - 1);
-    }
-  });
-});
-
 function showSlide(index) {
   slides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
+    slide.style.display = i === index ? 'block' : 'none';
   });
   currentSlide = index;
 
-  // Disable the back button on first slide, enable otherwise
+  // Disable back button on the current slide if it's the first slide
   backButtons.forEach((button, i) => {
-    button.disabled = i === 0 && index === 0;
+    button.disabled = (i === index) && (index === 0);
   });
 }
 
 function goToSlide(index) {
-  showSlide(index);
+  if (index >= 0 && index < slides.length) {
+    showSlide(index);
+  }
 }
 
 function evaluateEligibility() {
@@ -59,10 +35,34 @@ function evaluateEligibility() {
   const resultDiv = document.getElementById('result');
   resultDiv.style.display = 'block';
   resultDiv.textContent = allYes
-    ? "🎉 Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!"
-    : "⚠️ Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
+    ? "Congrats! You are eligible to apply for PI Researcher funding at Cal Poly Humboldt!"
+    : "Oops! It looks like you might not meet all the requirements. Please check with the Office of Research.";
   resultDiv.className = "result " + (allYes ? "success" : "error");
 
   // Show the Try Again button
   document.getElementById('try-again').style.display = 'block';
 }
+
+// Initial display
+showSlide(currentSlide);
+
+// Add event listeners to radio buttons for auto-advance
+slides.forEach((slide, index) => {
+  const radios = slide.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (index < slides.length - 1) {
+        goToSlide(index + 1);
+      } else {
+        evaluateEligibility();
+      }
+    });
+  });
+});
+
+// Back buttons to go to previous slide
+backButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    goToSlide(currentSlide - 1);
+  });
+});
